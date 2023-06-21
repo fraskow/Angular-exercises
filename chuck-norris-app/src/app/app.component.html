@@ -1,4 +1,4 @@
-<h1>Categorías de Chuck Norris</h1>
+<h1>Categorías</h1>
 
 <div>
   <h2>Crear Categoría</h2>
@@ -6,13 +6,13 @@
   <button (click)="createCategory()">Crear</button>
 </div>
 
-<div *ngIf="categories">
+<div *ngIf="categories.length > 0">
   <h2>Listado de Categorías</h2>
   <ul>
-    <li *ngFor="let category of categories">
+    <li *ngFor="let category of categories; let i = index">
       {{ category }}
-      <button (click)="updateCategory(category, 'New Category')">Actualizar</button>
-      <button (click)="deleteCategory(category)">Eliminar</button>
+      <button (click)="updateCategory(i)">Actualizar</button>
+      <button (click)="deleteCategory(i)">Eliminar</button>
     </li>
   </ul>
 </div>

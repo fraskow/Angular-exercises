@@ -10,8 +10,8 @@ export class AppComponent implements OnInit {
 
   title = 'chuck-norris-app';
 
-  categories: any[] = [];
-  newCategory: string ="";
+  categories: string[] = [];
+  newCategory: string = "";
 
   constructor(private chuckNorrisService: ChuckNorrisService) {}
 
@@ -30,40 +30,21 @@ export class AppComponent implements OnInit {
       })
   }
 
-  createCategory() {
-    this.chuckNorrisService.createCategory(this.newCategory).subscribe(
-      (response) => {
-        console.log('Categoría creada:', response);
-        this.loadCategories();
-        this.newCategory = ''; // Limpiar el campo de entrada después de la creación
-      },
-      (error) => {
-        console.log('Error:', error);
-      }
-    );
+createCategory() {
+  if (this.newCategory) {
+    this.categories.push(this.newCategory);
+    this.newCategory = '';
   }
+}
 
-  updateCategory(oldCategory: string, newCategory: string) {
-    this.chuckNorrisService.updateCategory(oldCategory, newCategory).subscribe(
-      (response) => {
-        console.log('Categoría actualizada:', response);
-        this.loadCategories();
-      },
-      (error) => {
-        console.log('Error:', error);
-      }
-    );
+updateCategory(index: number) {
+  const newCategory = prompt('Ingrese la nueva categoría');
+  if (newCategory) {
+    this.categories[index] = newCategory;
   }
+}
 
-  deleteCategory(category: string) {
-    this.chuckNorrisService.deleteCategory(category).subscribe(
-      (response) => {
-        console.log('Categoría eliminada:', response);
-        this.loadCategories();
-      },
-      (error) => {
-        console.log('Error:', error);
-      }
-    );
-  }
+deleteCategory(index: number) {
+  this.categories.splice(index, 1);
+}
 }

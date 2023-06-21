@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 export class ChuckNorrisService {
   private apiUrl = 'https://api.chucknorris.io/';
 
+  
+
   constructor(private http: HttpClient) {}
 
   getCategories(): Observable<any> {
