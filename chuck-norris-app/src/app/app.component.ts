@@ -7,6 +7,9 @@ import { ChuckNorrisService } from './chuck-norris.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
+  title = 'chuck-norris-app';
+
   categories: any[] = [];
   newCategory: string ="";
 

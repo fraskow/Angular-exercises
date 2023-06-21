@@ -15,14 +15,14 @@ export class ChuckNorrisService {
   }
 
   createCategory(category: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}categories`, { category });
+    return this.http.post<any>(`${this.apiUrl}jokes/categories`, { category });
   }
 
   updateCategory(oldCategory: string, newCategory: string): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}categories/${oldCategory}`, { category: newCategory });
+    return this.http.put<any>(`${this.apiUrl}jokes/categories/${oldCategory}`, { category: newCategory });
   }
 
   deleteCategory(category: string): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}categories/${category}`);
+    return this.http.delete<any>(`${this.apiUrl}jokes/categories/${category}`);
   }
 }
