@@ -1,0 +1,26 @@
+<h2>Lista de libros</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Imagen</th>
+      <th>Nombre</th>
+      <th>Editorial</th>
+      <th>Género</th>
+      <th>Autor</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books">
+      <td><img [src]="book.image" alt="Portada del libro" width="100"></td>
+      <td>{{ book.name }}</td>
+      <td>{{ book.editorial }}</td>
+      <td>{{ book.gender }}</td>
+      <td>{{ book.author }}</td>
+      <td>
+        <button (click)="deleteBook(book.id)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
